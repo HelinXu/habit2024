@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO</title>
+</head>
+<body>
+    <div id="file-content">Loading...</div>
+
+    <script>
+        const userName = 'HelinXu';
+        const repoName = 'helinxu.github.io';
+        const filePath = 'README.md';
+
+        const apiUrl = `https://api.github.com/repos/${userName}/${repoName}/contents/${filePath}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const fileContent = atob(data.content);
+                document.getElementById('file-content').innerText = fileContent;
+            })
+            .catch(error => console.error('ERROR: ', error));
+    </script>
+</body>
+</html>
